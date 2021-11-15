@@ -1,0 +1,5 @@
+{
+    "body": {
+        "ctrl-n": "custom:new-note-from-default"
+    }
+}

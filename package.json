@@ -1,0 +1,23 @@
+{
+  "name": "inkdrop-default-note",
+  "main": "./lib/inkdrop-default-note",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Create 'New Note' from a default template",
+  "engines": {
+    "inkdrop": "^5.x"
+  },
+  "scripts": {
+    "build": "swc src/ -d lib/",
+    "watch": "swc -w src/ -d lib/"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.108",
+    "chokidar": "^3.5.2"
+  },
+  "dependencies": {
+    "liquidjs": "^9.28.5",
+    "markdown-yaml-metadata-parser": "^3.0.0"
+  }
+}
