@@ -2,6 +2,7 @@ import metadataParser from "markdown-yaml-metadata-parser";
 import { Liquid } from "liquidjs";
 
 const DEFAULT_NOTE_TAG = "Default";
+const NOTE_STATUSES = ["none", "active", "onHold", "completed", "dropped"];
 
 const getDefaultNoteTemplate = async () => {
   const { notes, tags } = inkdrop.store.getState();
@@ -19,6 +20,10 @@ const getDefaultNoteTemplate = async () => {
       ...metadata,
       now,
     });
+    let status = metadata.status;
+    if (!NOTE_STATUSES.includes(status)) {
+      status = "none";
+    }
     const body = await engine.parseAndRender(content.trim(), {
       ...metadata,
       title,
@@ -28,6 +33,7 @@ const getDefaultNoteTemplate = async () => {
     return {
       ...defaultNote,
       title,
+      status,
       body,
     };
   } catch (err) {
